@@ -6,8 +6,8 @@ var session = require('express-session');
 var db = require('./models')
 
 var app = express()
-app.use(cors());
 app.use(express.static('./public'))
+app.use(cors());
 
 var PORT = process.env.PORT
 
@@ -40,7 +40,8 @@ require('./routes/apiRoutes')(app)
 
 
 
-
-app.listen(PORT, function () {
-  console.log("App listening on PORT " + PORT);
+db.sequelize.sync({ force: false }).then(function () {
+  app.listen(PORT, function () {
+    console.log("App listening on PORT " + PORT);
+  });
 });

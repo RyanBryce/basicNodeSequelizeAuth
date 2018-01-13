@@ -8,8 +8,9 @@ $("#signIn").on("click", function () {
     username: $("#username").val().trim(),
     password: $("#pw").val().trim()
   }
+  console.log(user)
 
-  $.get('/api/login', user).then(function (response) {
+  $.post('/api/login', user).then(function (response) {
     console.log(response)
   })
 
@@ -21,8 +22,7 @@ $("#signUp").on("click", function () {
     name: $("#signUpName").val().trim(),
     username: $("#signUpUsername").val().trim(),
     password: $("#signUpPassword").val().trim(),
-    email: $("#signUpEmail").val().trim(),
-
+    email: $("#signUpEmail").val().trim()
   }
 
   $.post('/api/signUp', user).then(function (response) {

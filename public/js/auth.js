@@ -12,6 +12,12 @@ $("#signIn").on("click", function () {
 
   $.post('/api/login', user).then(function (response) {
     console.log(response)
+    if (response !== 'Successful login') {
+      console.log("your password or username are spelt incorrectly")
+    }else{
+      console.log("you are logged in sucessfully")
+      location = "/profiles"
+    }
   })
 
 })

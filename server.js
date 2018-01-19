@@ -9,10 +9,10 @@ var app = express()
 app.use(express.static('./public'))
 app.use(cors());
 
-var PORT = process.env.PORT
+var PORT = process.env.PORT || 3000;
 
 app.use(session({
-  secret: process.env.SESSIONSECRET || config.sessionSecret,
+  secret: process.env.SESSIONSECRET || config.sessionSecret || "cat",
   resave: false,
   saveUninitialized: true
 }));

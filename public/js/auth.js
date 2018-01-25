@@ -16,7 +16,7 @@ $("#signIn").on("click", function () {
       console.log("your password or username are spelt incorrectly")
     }else{
       console.log("you are logged in sucessfully")
-      location = "/profiles"
+      location.href = "/profile/"+ user.username
     }
   })
 

@@ -82,10 +82,10 @@ module.exports = function (app){
     })
   });
   //update profile route
-  app.put('/api/updateProfile', function(req, res, next){
+  app.put('/api/update/:username', function(req, res, next){
     req.session.user.currentUser = req.body
     var loggedUser = req.session.user.currentUser;
-    if(req.session.loggedIn){
+    if(true){
       db.users.update({
         username: loggedUser.username,
         name: loggedUser.name,
@@ -93,7 +93,7 @@ module.exports = function (app){
         profilePic: loggedUser.profilePic
       }, {
           where: {
-            username: loggedUser.username
+            username: req.params.username
           }
         }).then(function (dbData) {
           res.json(dbData.dataValues)

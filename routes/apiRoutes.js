@@ -52,6 +52,15 @@ module.exports = function (app){
         // Store hash in your password DB.
         req.body.password = hash;
           db.users.create(req.body).then(function (dbData) {
+            var userObj = {
+              id: dbData.dataValues.id,
+              name: dbData.dataValues.name,
+              username: dbData.dataValues.username,
+              email: dbData.dataValues.email,
+              profilePic: dbData.dataValues.profilePic
+            }
+            req.session.user.loggedIn = true;
+            req.session.user.currentUser = userObj;
             res.json(dbData);
           });
       });

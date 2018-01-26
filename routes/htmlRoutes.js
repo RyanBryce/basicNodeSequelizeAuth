@@ -16,5 +16,10 @@ module.exports = function(app){
     console.log(req.session.user)
     res.sendFile(path.join(__dirname, "../public/html/userProf.html"))
   })
+  //catch all route
+  app.get('*', function (req, res) {
+    console.log(req.session.user)
+    res.sendFile(path.join(__dirname, "../public/html/index.html"))
+  })
 
 }

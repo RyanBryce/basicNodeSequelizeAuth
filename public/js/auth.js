@@ -16,7 +16,7 @@ $("#signIn").on("click", function () {
       console.log("your password or username are spelt incorrectly")
     }else{
       console.log("you are logged in sucessfully")
-      location.href = "/profile/"+ user.username
+      window.location.replace("/profile/"+ user.username)
     }
   })
 
@@ -34,6 +34,7 @@ $("#signUp").on("click", function () {
 
   $.post('/api/signUp', user).then(function (response) {
     console.log(response)
+    window.location.replace("/profile/" + user.username)
   })
 
 })
